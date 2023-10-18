@@ -20,8 +20,13 @@ class Etudiant extends Model
         'ville_id'
     ];
 
-    public function ville() {
+    public function ville()
+    {
         return $this->belongsTo(Ville::class);
     }
-    
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
