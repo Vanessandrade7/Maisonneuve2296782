@@ -11,6 +11,9 @@
 <div class="container mt-4">
     @yield('content')
 </div>
-@vite(['resources/js/app.js', 'resources/css/app.scss'])
+
+<script src="{{ mix('js/app.js') }}"></script>
+<link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
 </body>
 </html>
