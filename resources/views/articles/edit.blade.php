@@ -24,7 +24,7 @@
             </div>
             <div class="mb-3">
                 <label for="date" class="form-label">Date</label>
-                <input type="date" name="date" class="form-control" value="{{ $article->date }}" required>
+                <input type="date" name="date" class="form-control" value="{{ \Carbon\Carbon::parse($article->date)->format('Y-m-d') }}" required>
             </div>
             <button type="submit" class="btn btn-primary">Update Article</button>
         </form>
