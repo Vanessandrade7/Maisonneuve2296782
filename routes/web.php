@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\LanguageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\EtudiantController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +18,7 @@ use App\Http\Controllers\EtudiantController;
 |
 */
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/etudiants', [IndexController::class, 'index'])->name('etudiants.index');
 Route::get('/etudiants/{etudiant}/edit', [EtudiantController::class, 'edit'])->name('etudiants.edit');
@@ -27,5 +30,5 @@ Route::get('/etudiants/{etudiant}', [EtudiantController::class, 'show'])->name('
 Auth::routes(['register' => false]);
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register',  [RegisterController::class, 'register']);
-
+Route::resource('articles', ArticleController::class)->middleware('auth');
 
