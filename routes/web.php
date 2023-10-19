@@ -21,16 +21,17 @@ use App\Http\Controllers\ArticleController;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/etudiants', [IndexController::class, 'index'])->name('etudiants.index');
-Route::get('/etudiants/{etudiant}/edit', [EtudiantController::class, 'edit'])->name('etudiants.edit');
-Route::get('/etudiants/create', [EtudiantController::class, 'create'])->name('etudiants.create');
-Route::put('/etudiants/{etudiant}', [EtudiantController::class, 'update'])->name('etudiants.update');
-Route::post('/etudiants', [EtudiantController::class, 'store'])->name('etudiants.store');
-Route::delete('/etudiants/{etudiant}', [EtudiantController::class, 'destroy'])->name('etudiants.destroy');
-Route::get('/etudiants/{etudiant}', [EtudiantController::class, 'show'])->name('etudiants.show');
+Route::get('/etudiants', [IndexController::class, 'index'])->middleware('auth')->name('etudiants.index');
+Route::get('/etudiants/{etudiant}/edit', [EtudiantController::class, 'edit'])->middleware('auth')->name('etudiants.edit');
+Route::get('/etudiants/create', [EtudiantController::class, 'create'])->middleware('auth')->name('etudiants.create');
+Route::put('/etudiants/{etudiant}', [EtudiantController::class, 'update'])->middleware('auth')->name('etudiants.update');
+Route::post('/etudiants', [EtudiantController::class, 'store'])->middleware('auth')->name('etudiants.store');
+Route::delete('/etudiants/{etudiant}', [EtudiantController::class, 'destroy'])->middleware('auth')->name('etudiants.destroy');
+Route::get('/etudiants/{etudiant}', [EtudiantController::class, 'show'])->middleware('auth')->name('etudiants.show');
 Auth::routes(['register' => false]);
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register',  [RegisterController::class, 'register']);
 Route::resource('articles', ArticleController::class)->middleware('auth');
 Route::resource('shared-files', SharedFileController::class)->middleware('auth');
+Route::get('/shared-files/{id}/download', [SharedFileController::class,'download'])->name('shared-files.download');
 

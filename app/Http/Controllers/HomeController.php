@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -13,7 +15,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
     }
 
     /**
@@ -23,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        if (Auth::check()) {
+            // Fetch articles and return them, assuming you have an Article model.
+            $articles = Article::all();
+            return view('home', ['articles' => $articles]);
+        }
+        return view('home', ['articles' => []]);
     }
 }

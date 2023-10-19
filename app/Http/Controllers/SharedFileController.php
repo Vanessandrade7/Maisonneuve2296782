@@ -67,7 +67,8 @@ class SharedFileController extends Controller
      */
     public function show($id)
     {
-        //
+        $sharedFile = SharedFiles::findOrFail($id);
+        return view('shared-files.show', ['file' => $sharedFile]);
     }
 
     /**
@@ -151,5 +152,20 @@ class SharedFileController extends Controller
 
         return redirect()->route('shared-files.index')->with('success', 'File deleted successfully.');
     }
+
+    public function download($id)
+    {
+        $file = SharedFiles::findOrFail($id);
+
+        // Assuming you've stored the file's path in a `path` attribute
+        $path = storage_path('app/' . $file->file_path);
+
+        if (file_exists($path)) {
+            return response()->download($path, $file->name);
+        }
+
+        return redirect()->back()->with('error', 'File not found!');
+    }
+
 
 }
