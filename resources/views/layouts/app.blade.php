@@ -42,7 +42,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ app()->getLocale() == 'fr' ? 'active' : '' }}"
-                                href="{{ route('home', ['lang' => 'fr']) }}">French</a>
+                                href="{{ route('home', ['lang' => 'fr']) }}">Francais</a>
                         </li>
                         <!-- Authentication Links -->
                         @guest
@@ -68,14 +68,14 @@
                                     <!-- Link to articles -->
                                     <li>
                                         <a class="dropdown-item" href="{{ route('articles.index') }}">
-                                            {{ __('Articles') }}
+                                            {{ __('messages.articles') }}
                                         </a>
                                     </li>
 
                                     <!-- Link to shared files -->
                                     <li>
                                         <a class="dropdown-item" href="{{ route('shared-files.index') }}">
-                                            {{ __('Shared Files') }}
+                                            {{ __('messages.shared_files') }}
                                         </a>
                                     </li>
 
@@ -89,7 +89,7 @@
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
+                                            {{ __('messages.Logout') }}
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"

@@ -12,12 +12,12 @@
                         <!-- Display article content based on the user's current language -->
                         <p>{{ $article['content_' . App::getLocale()] }}</p>
                         <hr>
-                        <p><small>{{ __('Published on') }} {{ $article->created_at->format('M d, Y') }}</small></p>
+                        <p><small>{{ __('messages.Published on') }} {{ $article->created_at->format('M d, Y') }}</small></p>
                     </div>
                 </div>
 
                 <div class="mt-3">
-                    <a href="{{ route('articles.index') }}" class="btn btn-secondary">{{ __('Back to articles') }}</a>
+                    <a href="{{ route('articles.index') }}" class="btn btn-secondary">{{ __('messages.Back to articles') }}</a>
                 </div>
             </div>
         </div>
