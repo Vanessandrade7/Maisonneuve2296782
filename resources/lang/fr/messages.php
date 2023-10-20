@@ -15,5 +15,6 @@ return [
     'upload_new_file' => 'Téléverser un nouveau fichier',
     'date' => 'Date',
     'add_article' => 'Ajouter Article',
+    'Logout' => 'Se déconnecter'
 ];
 ?>

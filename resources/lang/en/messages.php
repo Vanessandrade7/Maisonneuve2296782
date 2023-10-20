@@ -16,5 +16,6 @@ return [
     'upload_new_file' => 'Upload New File',
     'date' => 'Date',
     'add_article' => 'Add Article',
+    'Logout' => 'Logout'
 ];
 ?>
